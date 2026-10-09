@@ -1,0 +1,17 @@
+{
+  "name": "Rana Jewellers",
+  "short_name": "RanaJewellers",
+  "description": "Bespoke Gold, Diamond & Bridal Jewellery in DHA Lahore",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

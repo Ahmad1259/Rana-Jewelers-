@@ -1,0 +1,6 @@
+# Robots.txt for Rana Jewellers
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ranajewellers.com/sitemap.xml

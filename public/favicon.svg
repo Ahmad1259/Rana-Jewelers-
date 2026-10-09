@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BF953F" />
+      <stop offset="25%" stop-color="#FCF6BA" />
+      <stop offset="50%" stop-color="#B38728" />
+      <stop offset="75%" stop-color="#AA771C" />
+      <stop offset="100%" stop-color="#FBF5B7" />
+    </linearGradient>
+    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8E8E8" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#A6A6A6" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="120" height="120" rx="24" fill="#0A0A0A" />
+  <!-- Outer Gold Border -->
+  <rect x="6" y="6" width="108" height="108" rx="20" fill="none" stroke="url(#goldGrad)" stroke-width="2" />
+  <!-- Diamond Crest Motif -->
+  <polygon points="60,20 78,38 60,56 42,38" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" />
+  <circle cx="60" cy="38" r="4" fill="url(#silverGrad)" />
+  <!-- Rana 'R' Monogram -->
+  <text x="60" y="94" font-family="'Cinzel', 'Playfair Display', serif" font-size="44" font-weight="700" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">R</text>
+</svg>
