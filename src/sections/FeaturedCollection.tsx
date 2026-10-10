@@ -3,6 +3,7 @@ import { productsData } from '../data/products';
 import { siteConfig } from '../data/site';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { GoldButton } from '../components/ui/GoldButton';
+import { CleanPlaceholderSlot } from '../components/ui/CleanPlaceholderSlot';
 import { MessageCircle, Sparkles, Eye } from 'lucide-react';
 import { formatWhatsAppUrl } from '../lib/utils';
 import { Product } from '../types';
@@ -54,100 +55,121 @@ export const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({ onOpenAp
           ))}
         </div>
 
-        {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product) => {
-            const productInquiryMsg = `Salam Rana Jewellers, I am interested in inquiring about "${product.name}" (${product.purity || 'Bespoke piece'}) seen on your website.`;
-            const productWhatsAppUrl = formatWhatsAppUrl(siteConfig.contact.whatsappNumber, productInquiryMsg);
+        {/* Product Cards Grid or Clean Dedicated Slot */}
+        {filteredProducts.length === 0 ? (
+          <CleanPlaceholderSlot
+            title="Collection Being Updated From Atelier"
+            subtitle="High-resolution photography, weight certifications, and bespoke pieces are being loaded from the Google Drive catalogue."
+            onActionClick={() => onOpenAppointmentModal('Catalogue Inquiry')}
+            actionText="Request Private Catalogue"
+          />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product) => {
+              const productInquiryMsg = `Salam Rana Jewellers, I am interested in inquiring about "${product.name}" (${product.purity || 'Bespoke piece'}) seen on your website.`;
+              const productWhatsAppUrl = formatWhatsAppUrl(siteConfig.contact.whatsappNumber, productInquiryMsg);
 
-            return (
-              <div
-                key={product.id}
-                className="group relative bg-[#0D0D0D] border border-white/10 hover:border-[#BF953F]/60 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-xl"
-              >
-                {/* Image Container */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-[#141414]">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-105"
-                    loading="lazy"
-                  />
+              return (
+                <div
+                  key={product.id}
+                  className="group relative bg-[#0D0D0D] border border-white/10 hover:border-[#BF953F]/60 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-xl"
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#141414]">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-105"
+                      loading="lazy"
+                    />
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20 opacity-60 group-hover:opacity-40 transition-opacity" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20 opacity-60 group-hover:opacity-40 transition-opacity" />
 
-                  {/* Badges */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-                    {product.isNewArrival && (
-                      <span className="text-[10px] uppercase tracking-widest px-2.5 py-0.5 bg-[#BF953F] text-black font-semibold">
-                        New Masterwork
-                      </span>
-                    )}
-                    {product.purity && (
-                      <span className="text-[10px] uppercase tracking-widest px-2.5 py-0.5 bg-black/80 backdrop-blur-sm border border-[#BF953F]/40 text-[#FCF6BA]">
-                        {product.purity}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Quick View Button on Desktop */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
-                    <button
-                      type="button"
-                      onClick={() => setActiveProductModal(product)}
-                      className="px-4 py-2 bg-black/90 border border-[#BF953F] text-[#FCF6BA] text-xs uppercase tracking-widest flex items-center gap-2 hover:bg-[#BF953F] hover:text-black transition-colors"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      View Details
-                    </button>
-                  </div>
-                </div>
-
-                {/* Card Details */}
-                <div className="p-6 flex flex-col flex-grow justify-between">
-                  <div>
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-[#BF953F] font-medium block mb-1">
-                      {product.category.toUpperCase()} COLLECTION
-                    </span>
-                    <h3 className="font-serif text-xl text-white group-hover:text-gold-metallic transition-colors leading-snug">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-[#999999] font-light mt-2 line-clamp-2 leading-relaxed">
-                      {product.description}
-                    </p>
-                  </div>
-
-                  {/* Price & Action Row */}
-                  <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between gap-3">
-                    <div className="flex flex-col">
-                      <span className="text-[9px] uppercase tracking-wider text-[#777777]">
-                        Pricing &amp; Specs
-                      </span>
-                      <span className="text-xs font-medium text-[#FCF6BA] tracking-wide">
-                        Available on Request
-                      </span>
+                    {/* Badges */}
+                    <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+                      {product.isNewArrival && (
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-0.5 bg-[#BF953F] text-black font-semibold">
+                          New Masterwork
+                        </span>
+                      )}
+                      {product.purity && (
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-0.5 bg-black/80 backdrop-blur-sm border border-[#BF953F]/40 text-[#FCF6BA]">
+                          {product.purity}
+                        </span>
+                      )}
                     </div>
 
-                    <a
-                      href={productWhatsAppUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 text-xs font-medium tracking-wider uppercase transition-colors"
-                      title="Inquire directly on WhatsApp"
-                    >
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      <span>Inquire</span>
-                    </a>
+                    {/* Quick View Button on Desktop */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                      <button
+                        type="button"
+                        onClick={() => setActiveProductModal(product)}
+                        className="px-4 py-2 bg-black/90 border border-[#BF953F] text-[#FCF6BA] text-xs uppercase tracking-widest flex items-center gap-2 hover:bg-[#BF953F] hover:text-black transition-colors"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Card Details */}
+                  <div className="p-6 flex flex-col flex-grow justify-between">
+                    <div>
+                      <span className="text-[10px] tracking-[0.2em] uppercase text-[#BF953F] font-medium block mb-1">
+                        {product.category.toUpperCase()} COLLECTION
+                      </span>
+                      <h3 className="font-serif text-xl text-white group-hover:text-gold-metallic transition-colors leading-snug">
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-[#999999] font-light mt-2 line-clamp-2 leading-relaxed">
+                        {product.description}
+                      </p>
+                    </div>
+
+                    {/* Price & Action Row */}
+                    <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between gap-3">
+                      <div className="flex flex-col">
+                        <span className="text-[9px] uppercase tracking-wider text-[#777777]">
+                          Pricing &amp; Specs
+                        </span>
+                        <span className="text-xs font-medium text-[#FCF6BA] tracking-wide">
+                          Available on Request
+                        </span>
+                      </div>
+
+                      <a
+                        href={productWhatsAppUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/30 text-xs font-medium tracking-wider uppercase transition-colors"
+                        title="Inquire directly on WhatsApp"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        <span>Inquire</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+        )}
+
+        {/* Dedicated Reserved Slot for Upcoming Drive Data */}
+        <div className="mt-12">
+          <CleanPlaceholderSlot
+            title="Private Drive Catalogue Integration"
+            badge="Drive Sync Reserved"
+            subtitle="New bridal collections, gold rate adjustments, and verified photos added to the Google Drive folder will appear here automatically."
+            minHeight="min-h-[160px]"
+            onActionClick={() => onOpenAppointmentModal('Custom Design Commission')}
+            actionText="Consult Atelier Goldsmith"
+          />
         </div>
 
         {/* Bottom Bespoke Callout */}
-        <div className="mt-16 p-8 bg-[#0A0A0A] border border-[#BF953F]/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-8 bg-[#0A0A0A] border border-[#BF953F]/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 text-center md:text-left">
             <div className="hidden sm:flex w-12 h-12 rounded-full border border-[#BF953F] items-center justify-center text-[#BF953F] shrink-0">
               <Sparkles className="w-6 h-6" />

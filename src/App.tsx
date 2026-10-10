@@ -12,11 +12,13 @@ import { WhyChooseUsSection } from './sections/WhyChooseUsSection';
 import { TestimonialsSection } from './sections/TestimonialsSection';
 import { VisitUsSection } from './sections/VisitUsSection';
 import { AppointmentModal } from './components/forms/AppointmentModal';
+import { LuxuryPreloader } from './components/ui/LuxuryPreloader';
 import { MessageCircle } from 'lucide-react';
 import { siteConfig } from './data/site';
 import { formatWhatsAppUrl } from './lib/utils';
 
 export const App: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [appointmentService, setAppointmentService] = useState('Bridal Consultation');
 
@@ -33,69 +35,74 @@ export const App: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-[#000000] text-[#E8E8E8] flex flex-col selection:bg-[#B38728] selection:text-black">
-      {/* Announcement Bar */}
-      <AnnouncementBar />
+    <>
+      {/* Hanif Jewellers style animated preloader */}
+      {isLoading && <LuxuryPreloader onComplete={() => setIsLoading(false)} />}
 
-      {/* Sticky Main Navigation */}
-      <Navbar onOpenAppointmentModal={() => handleOpenAppointment('Private Viewing')} />
+      <div className="min-h-screen bg-[#000000] text-[#E8E8E8] flex flex-col selection:bg-[#B38728] selection:text-black">
+        {/* Announcement Bar */}
+        <AnnouncementBar />
 
-      {/* Main Page Content */}
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <HeroSection onOpenAppointmentModal={() => handleOpenAppointment('Private Viewing')} />
+        {/* Sticky Main Navigation */}
+        <Navbar onOpenAppointmentModal={() => handleOpenAppointment('Private Viewing')} />
 
-        {/* Shop by Category */}
-        <CategorySection />
+        {/* Main Page Content */}
+        <main className="flex-grow">
+          {/* Hero Section */}
+          <HeroSection onOpenAppointmentModal={() => handleOpenAppointment('Private Viewing')} />
 
-        {/* Featured Collection / New Arrivals */}
-        <FeaturedCollection onOpenAppointmentModal={handleOpenAppointment} />
+          {/* Shop by Category */}
+          <CategorySection />
 
-        {/* Bridal Couture Section */}
-        <BridalSection onOpenAppointmentModal={handleOpenAppointment} />
+          {/* Featured Collection / New Arrivals */}
+          <FeaturedCollection onOpenAppointmentModal={handleOpenAppointment} />
 
-        {/* About Rana Jewellers */}
-        <AboutSection />
+          {/* Bridal Couture Section */}
+          <BridalSection onOpenAppointmentModal={handleOpenAppointment} />
 
-        {/* Master Artisans / Founders */}
-        <FoundersSection />
+          {/* About Rana Jewellers */}
+          <AboutSection />
 
-        {/* Why Choose Us */}
-        <WhyChooseUsSection />
+          {/* Master Artisans / Founders (Safeguarded Clean Slot) */}
+          <FoundersSection />
 
-        {/* Verified Patron Testimonials */}
-        <TestimonialsSection />
+          {/* Why Choose Us */}
+          <WhyChooseUsSection />
 
-        {/* Visit Us: Location, Map & FAQs */}
-        <VisitUsSection />
-      </main>
+          {/* Verified Patron Testimonials */}
+          <TestimonialsSection />
 
-      {/* Footer */}
-      <Footer />
+          {/* Visit Us: Location, Map & FAQs */}
+          <VisitUsSection />
+        </main>
 
-      {/* Appointment & Private Viewing Modal */}
-      <AppointmentModal
-        isOpen={isAppointmentModalOpen}
-        onClose={() => setIsAppointmentModalOpen(false)}
-        initialService={appointmentService}
-      />
+        {/* Footer */}
+        <Footer />
 
-      {/* Floating Instant WhatsApp Button for Luxury Concierge */}
-      <aside aria-label="Quick WhatsApp Concierge">
-        <a
-          href={floatingWhatsAppUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
-          aria-label="Direct WhatsApp Concierge"
-        >
-          <MessageCircle className="w-5 h-5 fill-current" />
-          <span className="hidden sm:inline text-xs font-semibold tracking-wider uppercase">
-            WhatsApp Concierge
-          </span>
-        </a>
-      </aside>
-    </div>
+        {/* Appointment & Private Viewing Modal */}
+        <AppointmentModal
+          isOpen={isAppointmentModalOpen}
+          onClose={() => setIsAppointmentModalOpen(false)}
+          initialService={appointmentService}
+        />
+
+        {/* Floating Instant WhatsApp Button for Luxury Concierge */}
+        <aside aria-label="Quick WhatsApp Concierge">
+          <a
+            href={floatingWhatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+            aria-label="Direct WhatsApp Concierge"
+          >
+            <MessageCircle className="w-5 h-5 fill-current" />
+            <span className="hidden sm:inline text-xs font-semibold tracking-wider uppercase">
+              WhatsApp Concierge
+            </span>
+          </a>
+        </aside>
+      </div>
+    </>
   );
 };
 
