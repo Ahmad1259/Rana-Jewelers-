@@ -132,9 +132,14 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#6E6E6E]">
-          <p>© {currentYear} Rana Jewellers. All rights reserved. Handcrafted in Pakistan.</p>
-          <div className="flex items-center gap-6">
+        <div className="mt-14 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#6E6E6E] text-center sm:text-left">
+          <div>
+            <p>© {currentYear} Rana Jewellers. All rights reserved. Handcrafted in Pakistan.</p>
+            <p className="mt-1 text-[#8A8A8A]">
+              Developed by <span className="text-[#FCF6BA] font-medium tracking-wide">Ahmad Asif</span>
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-[10px] sm:text-[11px]">
             <span>DHA Lahore Flagship</span>
             <span>&bull;</span>
             <span>Hallmarked Pure Gold</span>
