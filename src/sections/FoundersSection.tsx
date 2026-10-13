@@ -1,7 +1,7 @@
 import React from 'react';
 import { foundersData, foundersConfig } from '../data/founders';
 import { SectionHeader } from '../components/ui/SectionHeader';
-import { Sparkles, Hammer } from 'lucide-react';
+import { Hammer } from 'lucide-react';
 
 export const FoundersSection: React.FC = () => {
   if (!foundersConfig.sectionEnabled) return null;
