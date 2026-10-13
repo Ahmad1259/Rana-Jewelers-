@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAppointmentModal }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -49,38 +49,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAppointmentModal }) => {
       className={`sticky top-0 z-40 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#000000]/95 backdrop-blur-md border-b border-[#BF953F]/30 shadow-2xl py-2'
-          : 'bg-[#000000]/80 backdrop-blur-sm border-b border-white/10 py-3.5'
+          : 'bg-[#000000]/85 backdrop-blur-sm border-b border-white/10 py-2.5 sm:py-3.5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo & Name */}
           <a
             href="#home"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#BF953F]"
+            className="flex items-center gap-2 sm:gap-3 group focus:outline-none"
             aria-label="Rana Jewellers Home"
           >
             <img
               src="/images/brand/rana-jewellers-logo.png"
               alt="Rana Jewellers Logo"
-              className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
               onError={(e) => {
-                // If logo fails to load, gracefully hide img and show stylized text
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
             <div className="flex flex-col">
-              <span className="font-serif text-lg sm:text-xl font-bold tracking-[0.18em] uppercase text-gold-metallic">
+              <span className="font-serif text-base sm:text-xl font-bold tracking-[0.14em] sm:tracking-[0.18em] uppercase text-gold-metallic leading-tight">
                 RANA JEWELLERS
               </span>
-              <span className="text-[9px] tracking-[0.3em] uppercase text-[#A0A0A0] font-light">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#A0A0A0] font-light">
                 DHA LAHORE
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-8" aria-label="Main Navigation">
             {navigationData.menuItems.map((item) => (
               <a
                 key={item.label}
@@ -104,16 +103,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAppointmentModal }) => {
             </GoldButton>
           </div>
 
-          {/* Mobile Menu Hamburger Button */}
-          <div className="flex items-center gap-3 lg:hidden">
+          {/* Mobile Right Controls: WhatsApp Quick Icon + Menu Hamburger */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href={formatWhatsAppUrl(siteConfig.contact.whatsappNumber, 'Salam Rana Jewellers, I would like to inquire about your jewellery.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] active:scale-95 transition-transform"
+              aria-label="Direct WhatsApp Chat"
+            >
+              <MessageCircle className="w-5 h-5 fill-current" />
+            </a>
+
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-[#E8E8E8] hover:text-[#FCF6BA] focus:outline-none focus:ring-2 focus:ring-[#BF953F]"
+              className="w-11 h-11 flex items-center justify-center text-[#E8E8E8] hover:text-[#FCF6BA] focus:outline-none border border-white/10 active:bg-white/10 transition-colors"
               aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
               aria-expanded={isMobileMenuOpen}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6 text-[#BF953F]" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -122,26 +131,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAppointmentModal }) => {
       {/* Mobile Drawer Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 top-[60px] z-50 bg-black/90 backdrop-blur-xl lg:hidden flex flex-col justify-between p-6 overflow-y-auto"
+          className="fixed inset-0 top-[56px] sm:top-[65px] z-50 bg-black/95 backdrop-blur-2xl lg:hidden flex flex-col justify-between p-5 sm:p-6 overflow-y-auto safe-bottom"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
         >
-          <div className="flex flex-col gap-6 pt-4">
-            <nav className="flex flex-col gap-4 text-center">
+          <div className="flex flex-col gap-5 pt-2">
+            <nav className="flex flex-col text-center divide-y divide-white/5">
               {navigationData.menuItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-serif text-lg tracking-widest uppercase text-[#E8E8E8] hover:text-[#FCF6BA] py-2 border-b border-white/5 transition-colors"
+                  className="font-serif text-lg tracking-[0.15em] uppercase text-[#E8E8E8] hover:text-[#FCF6BA] py-3.5 transition-colors flex items-center justify-center gap-2"
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </a>
               ))}
             </nav>
 
-            <div className="pt-4 flex flex-col gap-3">
+            <div className="pt-3 flex flex-col gap-3">
               <GoldButton
                 variant="primary"
                 size="md"
@@ -149,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAppointmentModal }) => {
                   setIsMobileMenuOpen(false);
                   onOpenAppointmentModal();
                 }}
-                className="w-full text-xs"
+                className="w-full min-h-[48px] text-xs font-semibold"
               >
                 Book Private Viewing
               </GoldButton>
@@ -164,21 +173,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAppointmentModal }) => {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-xs gap-2"
+                className="w-full min-h-[48px] text-xs gap-2 font-semibold"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 fill-current" />
                 WhatsApp Concierge
               </GoldButton>
             </div>
           </div>
 
-          {/* Mobile Footer Info */}
-          <div className="pt-8 border-t border-white/10 text-center text-xs text-[#A0A0A0] flex flex-col gap-2">
-            <p className="text-white font-medium">{siteConfig.location.fullAddress}</p>
-            <div className="flex justify-center items-center gap-4 text-[#BF953F] pt-2">
-              <a href={formatPhoneUrl(siteConfig.contact.phone)} className="flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5" />
-                {siteConfig.contact.phoneDisplay}
+          {/* Mobile Footer Info in Drawer */}
+          <div className="pt-6 border-t border-white/10 text-center text-xs text-[#A0A0A0] flex flex-col gap-2 mt-4">
+            <p className="text-white font-medium text-xs">{siteConfig.location.fullAddress}</p>
+            <div className="flex justify-center items-center gap-4 text-[#BF953F] pt-1">
+              <a href={formatPhoneUrl(siteConfig.contact.phone)} className="flex items-center gap-1.5 py-1">
+                <Phone className="w-4 h-4" />
+                <span>{siteConfig.contact.phoneDisplay}</span>
               </a>
             </div>
           </div>

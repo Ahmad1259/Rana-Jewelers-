@@ -11,7 +11,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppointmentModal
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#000000] border-b border-[#BF953F]/20"
+      className="relative min-h-[calc(100svh-56px)] sm:min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#000000] border-b border-[#BF953F]/20"
       aria-label="Hero Section"
     >
       {/* Background Cinematic Visual with dark luxury overlay */}
@@ -29,51 +29,51 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppointmentModal
 
       {/* Decorative Gold Grid Lines */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-15">
-        <div className="max-w-7xl mx-auto h-full grid grid-cols-4 border-x border-[#BF953F]/30">
+        <div className="max-w-7xl mx-auto h-full grid grid-cols-2 md:grid-cols-4 border-x border-[#BF953F]/30">
           <div className="border-r border-[#BF953F]/20" />
-          <div className="border-r border-[#BF953F]/20" />
-          <div className="border-r border-[#BF953F]/20" />
+          <div className="hidden md:block border-r border-[#BF953F]/20" />
+          <div className="hidden md:block border-r border-[#BF953F]/20" />
           <div />
         </div>
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center flex flex-col items-center">
         {/* Prestigious Crest Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#BF953F]/40 bg-black/60 backdrop-blur-md mb-6 sm:mb-8 shadow-gold-sm">
-          <Sparkles className="w-3.5 h-3.5 text-[#BF953F]" aria-hidden="true" />
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#FCF6BA] font-medium">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#BF953F]/40 bg-black/70 backdrop-blur-md mb-5 sm:mb-8 shadow-gold-sm max-w-[95%]">
+          <Sparkles className="w-3.5 h-3.5 text-[#BF953F] shrink-0" aria-hidden="true" />
+          <span className="text-[9px] xs:text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#FCF6BA] font-medium truncate">
             Bespoke Gold &amp; Diamond Masterpieces
           </span>
-          <span className="w-1.5 h-1.5 rotate-45 bg-[#BF953F]" />
+          <span className="w-1.5 h-1.5 rotate-45 bg-[#BF953F] shrink-0" />
         </div>
 
         {/* Brand Name Presentation */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-medium tracking-[0.08em] uppercase text-white mb-4 leading-[1.08]">
+        <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-medium tracking-[0.06em] sm:tracking-[0.08em] uppercase text-white mb-3 sm:mb-4 leading-[1.12]">
           <span className="block text-gold-metallic drop-shadow-md">
             Rana Jewellers
           </span>
         </h1>
 
         {/* Location & Heritage Tagline */}
-        <div className="flex items-center justify-center gap-2 text-xs sm:text-sm tracking-[0.25em] uppercase text-[#E8E8E8]/80 font-light mb-6">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#E8E8E8]/90 font-light mb-4 sm:mb-6">
           <MapPin className="w-3.5 h-3.5 text-[#BF953F]" />
           <span>Main Boulevard, DHA Lahore</span>
         </div>
 
         {/* Editorial Subtitle */}
-        <p className="max-w-2xl text-sm sm:text-base md:text-lg text-[#C0C0C0] font-light leading-relaxed mb-10">
+        <p className="max-w-2xl text-xs sm:text-base md:text-lg text-[#C0C0C0] font-light leading-relaxed mb-8 sm:mb-10 px-2">
           {siteConfig.shortDescription}
         </p>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+        {/* Mobile-Optimized Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto px-2">
           <GoldButton
             variant="primary"
             size="lg"
             asLink
             href="#collections"
-            className="w-full sm:w-auto min-w-[200px]"
+            className="w-full sm:w-auto min-w-[220px] min-h-[48px]"
           >
             Explore Collections
           </GoldButton>
@@ -82,36 +82,36 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenAppointmentModal
             variant="outline"
             size="lg"
             onClick={onOpenAppointmentModal}
-            className="w-full sm:w-auto min-w-[200px]"
+            className="w-full sm:w-auto min-w-[220px] min-h-[48px]"
           >
             Book Private Viewing
           </GoldButton>
         </div>
 
-        {/* Bottom Trust Pillars */}
-        <div className="mt-14 sm:mt-16 pt-8 border-t border-[#BF953F]/20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 w-full text-center">
-          <div>
-            <span className="block font-serif text-lg sm:text-xl text-[#FCF6BA]">21K &amp; 22K</span>
+        {/* Trust Pillars Grid */}
+        <div className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-[#BF953F]/20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8 w-full text-center">
+          <div className="p-2 sm:p-0">
+            <span className="block font-serif text-base sm:text-xl text-[#FCF6BA]">21K &amp; 22K</span>
             <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Hallmarked Gold</span>
           </div>
-          <div>
-            <span className="block font-serif text-lg sm:text-xl text-[#FCF6BA]">Certified</span>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Natural Diamonds</span>
+          <div className="p-2 sm:p-0">
+            <span className="block font-serif text-base sm:text-xl text-[#FCF6BA]">Certified</span>
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Solitaires</span>
           </div>
-          <div>
-            <span className="block font-serif text-lg sm:text-xl text-[#FCF6BA]">Haute Bridal</span>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Custom Trousseaus</span>
+          <div className="p-2 sm:p-0">
+            <span className="block font-serif text-base sm:text-xl text-[#FCF6BA]">Haute Bridal</span>
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Custom Sets</span>
           </div>
-          <div>
-            <span className="block font-serif text-lg sm:text-xl text-[#FCF6BA]">DHA Lahore</span>
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Private Boutique</span>
+          <div className="p-2 sm:p-0">
+            <span className="block font-serif text-base sm:text-xl text-[#FCF6BA]">DHA Lahore</span>
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8A8A8A]">Boutique</span>
           </div>
         </div>
 
         {/* Scroll Indicator */}
         <a
           href="#categories"
-          className="mt-10 inline-flex flex-col items-center text-[#8A8A8A] hover:text-[#FCF6BA] transition-colors group"
+          className="mt-8 sm:mt-10 inline-flex flex-col items-center text-[#8A8A8A] hover:text-[#FCF6BA] transition-colors group p-2"
           aria-label="Scroll to Categories"
         >
           <span className="text-[9px] uppercase tracking-widest mb-1 group-hover:tracking-[0.3em] transition-all">Discover</span>

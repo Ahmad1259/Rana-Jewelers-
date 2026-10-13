@@ -19,7 +19,7 @@ export const VisitUsSection: React.FC = () => {
   );
 
   return (
-    <section id="visit" className="py-20 sm:py-28 bg-[#030303] border-t border-[#BF953F]/30 relative" aria-label="Visit Our Showroom">
+    <section id="visit" className="py-14 sm:py-24 bg-[#030303] border-t border-[#BF953F]/30 relative" aria-label="Visit Our Showroom">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge="Flagship Boutique"
@@ -27,29 +27,29 @@ export const VisitUsSection: React.FC = () => {
           subtitle="Experience the grandeur of our collections in person. Located prominently on Main Boulevard, DHA Lahore."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Contact & Hours Info (5 cols) */}
-          <div className="lg:col-span-5 bg-[#0A0A0A] border border-[#BF953F]/40 p-8 sm:p-10 flex flex-col justify-between shadow-2xl">
+          <div className="lg:col-span-5 bg-[#0A0A0A] border border-[#BF953F]/40 p-5 sm:p-8 lg:p-10 flex flex-col justify-between shadow-2xl">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#BF953F] mb-4">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#BF953F] mb-3 sm:mb-4">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Showroom Concierge</span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl text-white mb-6">
+              <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl text-white mb-5 sm:mb-6">
                 Rana Jewellers Boutique
               </h3>
 
               {/* Address */}
-              <div className="space-y-6 text-sm">
+              <div className="space-y-5 text-sm">
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-none border border-[#BF953F]/50 flex items-center justify-center text-[#BF953F] shrink-0 bg-black mt-0.5">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-[#A0A0A0] mb-0.5">Location</span>
-                    <p className="text-white font-medium">{siteConfig.location.fullAddress}</p>
-                    <p className="text-xs text-[#888888] mt-0.5">DHA Phase 6 / Main Boulevard, Lahore</p>
+                    <span className="block text-[11px] uppercase tracking-wider text-[#A0A0A0] mb-0.5">Location</span>
+                    <p className="text-white font-medium text-xs sm:text-sm">{siteConfig.location.fullAddress}</p>
+                    <p className="text-[11px] text-[#888888] mt-0.5">DHA Phase 6 / Main Boulevard, Lahore</p>
                   </div>
                 </div>
 
@@ -59,7 +59,7 @@ export const VisitUsSection: React.FC = () => {
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-[#A0A0A0] mb-0.5">Boutique Timings</span>
+                    <span className="block text-[11px] uppercase tracking-wider text-[#A0A0A0] mb-0.5">Boutique Timings</span>
                     {siteConfig.openingHours.map((h, i) => (
                       <div key={i} className="text-xs text-[#D1D1D1]">
                         <span className="text-white font-medium">{h.days}:</span> {h.hours}
@@ -74,10 +74,10 @@ export const VisitUsSection: React.FC = () => {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-[#A0A0A0] mb-0.5">Direct Line</span>
+                    <span className="block text-[11px] uppercase tracking-wider text-[#A0A0A0] mb-0.5">Direct Line</span>
                     <a
                       href={formatPhoneUrl(siteConfig.contact.phone)}
-                      className="text-white hover:text-[#FCF6BA] transition-colors font-medium"
+                      className="text-white hover:text-[#FCF6BA] transition-colors font-medium text-xs sm:text-sm py-1 inline-block"
                     >
                       {siteConfig.contact.phoneDisplay}
                     </a>
@@ -90,12 +90,12 @@ export const VisitUsSection: React.FC = () => {
                     <MessageCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="block text-xs uppercase tracking-wider text-[#A0A0A0] mb-0.5">WhatsApp Concierge</span>
+                    <span className="block text-[11px] uppercase tracking-wider text-[#A0A0A0] mb-0.5">WhatsApp Concierge</span>
                     <a
                       href={whatsappInquiryUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#25D366] hover:underline font-medium"
+                      className="text-[#25D366] hover:underline font-medium text-xs sm:text-sm py-1 inline-block"
                     >
                       {siteConfig.contact.whatsappDisplay}
                     </a>
@@ -105,7 +105,7 @@ export const VisitUsSection: React.FC = () => {
             </div>
 
             {/* Direction Buttons */}
-            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-3">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex flex-col gap-3">
               <GoldButton
                 variant="primary"
                 size="md"
@@ -113,7 +113,7 @@ export const VisitUsSection: React.FC = () => {
                 href={siteConfig.location.googleMapsDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full gap-2 text-xs"
+                className="w-full gap-2 text-xs min-h-[48px]"
               >
                 <Navigation className="w-4 h-4" />
                 Get Driving Directions (Google Maps)
@@ -126,7 +126,7 @@ export const VisitUsSection: React.FC = () => {
                 href={whatsappInquiryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-xs"
+                className="w-full text-xs min-h-[48px]"
               >
                 Message On WhatsApp
               </GoldButton>
@@ -134,9 +134,9 @@ export const VisitUsSection: React.FC = () => {
           </div>
 
           {/* Right Column: Google Maps Interactive Embed (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6">
             {/* Map Frame */}
-            <div className="w-full h-[360px] sm:h-[420px] bg-[#121212] border border-[#BF953F]/40 relative overflow-hidden shadow-2xl">
+            <div className="w-full h-[280px] sm:h-[380px] lg:h-[420px] bg-[#121212] border border-[#BF953F]/40 relative overflow-hidden shadow-2xl">
               <iframe
                 title="Rana Jewellers Showroom Location on Google Maps - DHA Lahore"
                 src={siteConfig.location.googleMapsEmbedUrl}
@@ -148,18 +148,18 @@ export const VisitUsSection: React.FC = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="w-full h-full"
               />
-              <div className="absolute bottom-3 left-3 bg-black/90 backdrop-blur-md px-3 py-1.5 border border-white/10 text-[11px] text-[#FCF6BA]">
+              <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 bg-black/90 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 border border-white/10 text-[10px] sm:text-[11px] text-[#FCF6BA]">
                 📍 DHA Main Boulevard, Lahore
               </div>
             </div>
 
-            {/* Showroom Photographs Gallery from verified drive assets */}
-            <div className="grid grid-cols-3 gap-3">
+            {/* Showroom Photographs Gallery */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <div className="aspect-[4/3] bg-black border border-white/10 overflow-hidden">
                 <img
                   src="/images/store/showroom-1.jpg"
                   alt="Rana Jewellers Lahore Showroom interior"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-105 active:scale-95 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
@@ -167,7 +167,7 @@ export const VisitUsSection: React.FC = () => {
                 <img
                   src="/images/store/showroom-2.jpg"
                   alt="Rana Jewellers showcase"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-105 active:scale-95 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
@@ -175,7 +175,7 @@ export const VisitUsSection: React.FC = () => {
                 <img
                   src="/images/store/showroom-3.jpg"
                   alt="Rana Jewellers jewellery display"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-105 active:scale-95 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
@@ -184,13 +184,13 @@ export const VisitUsSection: React.FC = () => {
         </div>
 
         {/* Showroom FAQs Accordion */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <div className="text-center mb-8">
+        <div className="mt-14 sm:mt-20 max-w-4xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
             <span className="text-[10px] uppercase tracking-widest text-[#BF953F]">Guidance &amp; Concierge</span>
-            <h3 className="text-2xl sm:text-3xl font-serif text-white mt-1">Frequently Inquired</h3>
+            <h3 className="text-xl sm:text-3xl font-serif text-white mt-1">Frequently Inquired</h3>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2.5 sm:space-y-3">
             {faqsData.map((faq) => {
               const isOpen = openFaq === faq.id;
               return (
@@ -201,10 +201,10 @@ export const VisitUsSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => toggleFaq(faq.id)}
-                    className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 focus:outline-none focus:ring-1 focus:ring-[#BF953F]"
+                    className="w-full px-4 sm:px-6 py-3.5 sm:py-4 text-left flex items-center justify-between gap-3 focus:outline-none min-h-[48px]"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-serif text-sm sm:text-base text-white">{faq.question}</span>
+                    <span className="font-serif text-xs sm:text-base text-white pr-2">{faq.question}</span>
                     <ChevronDown
                       className={`w-4 h-4 text-[#BF953F] transition-transform duration-300 shrink-0 ${
                         isOpen ? 'rotate-180' : ''
@@ -213,7 +213,7 @@ export const VisitUsSection: React.FC = () => {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-[#A0A0A0] font-light leading-relaxed border-t border-white/5">
+                    <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-1 text-xs sm:text-sm text-[#A0A0A0] font-light leading-relaxed border-t border-white/5">
                       {faq.answer}
                     </div>
                   )}

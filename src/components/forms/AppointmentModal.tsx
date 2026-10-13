@@ -63,48 +63,48 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md transition-opacity overflow-y-auto safe-bottom"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg bg-[#0E0E0E] border border-[#BF953F]/40 shadow-2xl p-6 sm:p-8 rounded-none overflow-hidden"
+        className="relative w-full max-w-lg bg-[#0E0E0E] border border-[#BF953F]/40 shadow-2xl p-5 sm:p-8 rounded-none overflow-hidden my-auto"
       >
         {/* Subtle Gold Corner Accents */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#BF953F]" />
-        <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#BF953F]" />
-        <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#BF953F]" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#BF953F]" />
+        <div className="absolute top-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-t-2 border-l-2 border-[#BF953F]" />
+        <div className="absolute top-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-t-2 border-r-2 border-[#BF953F]" />
+        <div className="absolute bottom-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-b-2 border-l-2 border-[#BF953F]" />
+        <div className="absolute bottom-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-b-2 border-r-2 border-[#BF953F]" />
 
-        {/* Close Button */}
+        {/* Close Button with generous touch target */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-[#A0A0A0] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#BF953F]"
+          className="absolute top-2.5 right-2.5 p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#A0A0A0] hover:text-white transition-colors focus:outline-none"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-[#BF953F] mb-1">
+        <div className="text-center mb-5 sm:mb-6 pt-1">
+          <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-widest text-[#BF953F] mb-1">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Private Atelier Consultation</span>
           </div>
-          <h3 id="modal-title" className="text-2xl sm:text-3xl font-serif text-white">
+          <h3 id="modal-title" className="text-xl sm:text-3xl font-serif text-white">
             Schedule a Private Viewing
           </h3>
-          <p className="text-xs text-[#A0A0A0] mt-1 font-light">
+          <p className="text-[11px] sm:text-xs text-[#A0A0A0] mt-1 font-light">
             DHA Main Boulevard Showroom, Lahore
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
           <div>
-            <label className="block text-xs uppercase tracking-wider text-[#C0C0C0] mb-1.5">
+            <label className="block text-[11px] uppercase tracking-wider text-[#C0C0C0] mb-1">
               Your Full Name
             </label>
             <input
@@ -113,13 +113,13 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="e.g. Fatima Ali"
-              className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#BF953F] focus:ring-1 focus:ring-[#BF953F]"
+              className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#BF953F] min-h-[44px]"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             <div>
-              <label className="block text-xs uppercase tracking-wider text-[#C0C0C0] mb-1.5">
+              <label className="block text-[11px] uppercase tracking-wider text-[#C0C0C0] mb-1">
                 Contact Number
               </label>
               <input
@@ -128,18 +128,18 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="0300 0000000"
-                className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#BF953F] focus:ring-1 focus:ring-[#BF953F]"
+                className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-base sm:text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#BF953F] min-h-[44px]"
               />
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider text-[#C0C0C0] mb-1.5">
+              <label className="block text-[11px] uppercase tracking-wider text-[#C0C0C0] mb-1">
                 Consultation Type
               </label>
               <select
                 value={service}
                 onChange={(e) => setService(e.target.value)}
-                className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#BF953F] focus:ring-1 focus:ring-[#BF953F]"
+                className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-base sm:text-sm text-white focus:outline-none focus:border-[#BF953F] min-h-[44px]"
               >
                 <option value="Bridal Consultation">Bridal Trousseau Viewing</option>
                 <option value="Custom Design Commission">Bespoke Custom Commission</option>
@@ -150,19 +150,17 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             <div>
-              <label className="block text-xs uppercase tracking-wider text-[#C0C0C0] mb-1.5">
+              <label className="block text-[11px] uppercase tracking-wider text-[#C0C0C0] mb-1">
                 Preferred Date
               </label>
-              <div className="relative">
-                <input
-                  type="date"
-                  value={preferredDate}
-                  onChange={(e) => setPreferredDate(e.target.value)}
-                  className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#BF953F] focus:ring-1 focus:ring-[#BF953F]"
-                />
-              </div>
+              <input
+                type="date"
+                value={preferredDate}
+                onChange={(e) => setPreferredDate(e.target.value)}
+                className="w-full bg-[#161616] border border-white/10 px-3.5 py-2.5 text-base sm:text-sm text-white focus:outline-none focus:border-[#BF953F] min-h-[44px]"
+              />
             </div>
 
             <div className="flex flex-col justify-end text-[11px] text-[#A0A0A0]">
@@ -175,15 +173,15 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs uppercase tracking-wider text-[#C0C0C0] mb-1.5">
-              Preferences or Specific Requirements (Optional)
+            <label className="block text-[11px] uppercase tracking-wider text-[#C0C0C0] mb-1">
+              Preferences (Optional)
             </label>
             <textarea
               rows={2}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Interested in antique polki bridal sets or diamond engagement rings..."
-              className="w-full bg-[#161616] border border-white/10 px-3.5 py-2 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#BF953F] focus:ring-1 focus:ring-[#BF953F] resize-none"
+              placeholder="e.g. Interested in polki bridal choker sets..."
+              className="w-full bg-[#161616] border border-white/10 px-3.5 py-2 text-base sm:text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#BF953F] resize-none"
             />
           </div>
 
@@ -192,14 +190,14 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
               type="submit"
               variant="primary"
               size="lg"
-              className="w-full gap-2 text-xs"
+              className="w-full gap-2 text-xs min-h-[48px]"
             >
               <MessageCircle className="w-4 h-4" />
               Confirm Appointment via WhatsApp
             </GoldButton>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-[10px] text-[#808080] pt-1">
+          <div className="flex items-center justify-center gap-1.5 text-[10px] text-[#808080] pt-1">
             <ShieldCheck className="w-3.5 h-3.5 text-[#BF953F]" />
             <span>Complete client confidentiality guaranteed at Rana Jewellers</span>
           </div>

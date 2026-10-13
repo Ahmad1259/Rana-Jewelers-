@@ -39,7 +39,7 @@ export const App: React.FC = () => {
       {/* Hanif Jewellers style animated preloader */}
       {isLoading && <LuxuryPreloader onComplete={() => setIsLoading(false)} />}
 
-      <div className="min-h-screen bg-[#000000] text-[#E8E8E8] flex flex-col selection:bg-[#B38728] selection:text-black">
+      <div className="min-h-screen bg-[#000000] text-[#E8E8E8] flex flex-col selection:bg-[#B38728] selection:text-black w-full overflow-x-hidden">
         {/* Announcement Bar */}
         <AnnouncementBar />
 
@@ -47,7 +47,7 @@ export const App: React.FC = () => {
         <Navbar onOpenAppointmentModal={() => handleOpenAppointment('Private Viewing')} />
 
         {/* Main Page Content */}
-        <main className="flex-grow">
+        <main className="flex-grow w-full">
           {/* Hero Section */}
           <HeroSection onOpenAppointmentModal={() => handleOpenAppointment('Private Viewing')} />
 
@@ -86,16 +86,16 @@ export const App: React.FC = () => {
           initialService={appointmentService}
         />
 
-        {/* Floating Instant WhatsApp Button for Luxury Concierge */}
+        {/* Floating Instant WhatsApp Button for Luxury Concierge (Mobile Safe) */}
         <aside aria-label="Quick WhatsApp Concierge">
           <a
             href={floatingWhatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+            className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-3 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white rounded-full shadow-2xl transition-all duration-300 group focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 safe-bottom-margin"
             aria-label="Direct WhatsApp Concierge"
           >
-            <MessageCircle className="w-5 h-5 fill-current" />
+            <MessageCircle className="w-5 h-5 fill-current shrink-0" />
             <span className="hidden sm:inline text-xs font-semibold tracking-wider uppercase">
               WhatsApp Concierge
             </span>

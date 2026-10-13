@@ -6,6 +6,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
   }
   
   body {
@@ -13,11 +14,23 @@
     color: #E8E8E8;
     font-family: 'Jost', sans-serif;
     overflow-x: hidden;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent iOS Safari input auto-zoom by ensuring minimum 16px font size on inputs */
+  input, select, textarea {
+    font-size: 16px !important;
   }
 
   h1, h2, h3, h4, .font-serif {
     font-family: 'Cinzel', serif;
     letter-spacing: 0.05em;
+  }
+
+  /* Better mobile touch responsiveness */
+  button, a {
+    touch-action: manipulation;
   }
 }
 
@@ -54,9 +67,18 @@
   animation: goldShimmer 6s ease-in-out infinite;
 }
 
+/* Safe area insets for notched iPhones and mobile home indicators */
+.safe-bottom {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.safe-bottom-margin {
+  margin-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
 /* Custom Smooth Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #0A0A0A;
